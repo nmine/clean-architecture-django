@@ -7,4 +7,4 @@ class RetrieveMembersUseCase:
         self.memberRepository = memberRepository
 
     def execute(self) -> Member:
-        return Member('sdq', 'qsd')
+        return self.memberRepository.retrieve_member('')
