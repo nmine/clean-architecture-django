@@ -1,18 +1,12 @@
 from django.http import HttpResponse
-from dependency_injector.wiring import inject, Provide
-from cleanarchi.containers import Container
-
-from polls.application.usecases.RetrieveMembersUseCase import RetrieveMembersUseCase
 
 
-@inject
-def index(request,
-          useCase: RetrieveMembersUseCase = Provide[Container.useCase]):
-    member = useCase.execute()
-    return HttpResponse("Hello, world. You're at the polls index."+member.lastname)
+def index(request):
+    return HttpResponse("Hello, world. You're at the polls index.")
 
 
 def detail(request, question_id):
+    # member = useCase.execute()
     return HttpResponse("You're looking at question %s." % question_id)
 
 
