@@ -8,7 +8,7 @@ urlpatterns = [
     # ex: /polls/
     path('', views.index, name='index'),
     # ex: /polls/5/
-    path('<int:question_id>/', ViewWrapper(usecaseFactory=RetrieveMembersUseCaseFactory()).detail, name='detail'),
+    path('<int:question_id>/', ViewWrapper.as_view(usecaseFactory=RetrieveMembersUseCaseFactory()) ),
     # ex: /polls/5/results/
     path('<int:question_id>/results/', views.results, name='results'),
     # ex: /polls/5/vote/

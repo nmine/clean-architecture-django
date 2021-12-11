@@ -1,13 +1,10 @@
 from django.http import HttpResponse
+from django.views import View
 
-from polls.factories import RetrieveMembersUseCaseFactory
 
+class ViewWrapper(View):
+    usecaseFactory = None
 
-class ViewWrapper:
-
-    def __init__(self, usecaseFactory: RetrieveMembersUseCaseFactory):
-        self.usecaseFactory = usecaseFactory
-
-    def detail(self, request, question_id):
+    def get(self, request, *args, **kwargs):
         member = self.usecaseFactory.get().execute()
-        return HttpResponse("You're looking at question %s." % question_id)
+        return HttpResponse("You're looking at question.")
